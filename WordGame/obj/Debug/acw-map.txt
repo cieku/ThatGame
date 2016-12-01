@@ -1,0 +1,4 @@
+WordGame.MainActivity, WordGame;md5dfec3127188a7bc3ce89c7f55ad66ccb.MainActivity
+WordGame.MainActivity, WordGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5dfec3127188a7bc3ce89c7f55ad66ccb.MainActivity
+WordGame.MainActivity;md5dfec3127188a7bc3ce89c7f55ad66ccb.MainActivity
+wordgame.MainActivity;md5dfec3127188a7bc3ce89c7f55ad66ccb.MainActivity
