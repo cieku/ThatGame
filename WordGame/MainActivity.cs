@@ -12,7 +12,7 @@ namespace WordGame
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
             TextView aa = FindViewById<TextView>(Resource.Id.textView1);
-            aa.Text = "Dupa";
+            aa.Text = "Dupa z trupa";
             // Set our view from the "main" layout resource
             
         }
