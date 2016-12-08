@@ -15,6 +15,7 @@ namespace WordGame
             aa.Text = "Maruś kocham Cie. 555";
             // Set our view from the "main" layout resource
             
+            //DUPA DUPA
         }
     }
 }
