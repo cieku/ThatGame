@@ -39,7 +39,7 @@ namespace WordGame.GameCore
         public string GetRandomWord()
         {
             Random r = new Random();
-            return words[r.Next(words.Count)-1];
+            return words[r.Next(words.Count)];
         }
     }
 }
