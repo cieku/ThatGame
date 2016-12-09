@@ -18,75 +18,63 @@ namespace WordGame
     [Activity(Label = "GameplayView", ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameplayViewActivity : Activity
     {
-        string wordToDisplay;
-        string wordToGuess;
-        public System.Timers.Timer _timer;
-        List<int> lettersRevealed = new List<int>();
-        int indexof = 0;
+        /// <summary>
+        /// Timer.
+        /// </summary>
+        private System.Timers.Timer _timer;
 
+        /// <summary>
+        /// The world library class which is a controler for this activity.
+        /// </summary>
+        WordLibraryClass wlc;
+
+        /// <summary>
+        /// Textview with hint letters.
+        /// </summary>
+        TextView hintTv;
+
+        /// <summary>
+        /// On create.
+        /// </summary>
+        /// <param name="savedInstanceState"></param>
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Initialize View elements
             base.OnCreate(savedInstanceState);
-
-            _timer = new System.Timers.Timer();
-            _timer.Interval = 2000;
-            _timer.Elapsed += OnTimedEvent;
-            _timer.Enabled = true;
-
             SetContentView(Resource.Layout.GameplayView);
+            hintTv = FindViewById<TextView>(Resource.Id.hintTV);
 
-            TextView hintTv = FindViewById<TextView>(Resource.Id.hintTV);
+            //Initialize veriables
+            InitializeTimer();
+            wlc = new WordLibraryClass(this);
+            wlc.RollRandomWord();
 
-            WordLibraryClass wlc = new WordLibraryClass(this);
-            wlc.LoadWordsFromFile();
-
-            wordToGuess = wlc.GetRandomWord();
-
-            wordToDisplay = wordToGuess.Aggregate(string.Empty, (c, i) => c + i + ' ');
-
-            Regex pattern = new Regex(@"\w");
-            wordToDisplay= pattern.Replace(wordToDisplay, "X");
-            hintTv.Text = wordToDisplay;
-
-            
+            hintTv.Text = wlc.GetWordToDisplay();
         }
         
+        /// <summary>
+        /// Event called on timer tick.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Random rnd = new Random();
-            int indexof = rnd.Next(wordToDisplay.Length - 1);
-
-            while (lettersRevealed.Contains(indexof))
-            {
-                indexof = rnd.Next(wordToGuess.Length - 1);
-            }
-
-            int indexOfLetter = GetIndexOfLetterInDisplayed(indexof);
-            StringBuilder sb = new StringBuilder(wordToDisplay);
-            sb[indexOfLetter] = wordToGuess[indexof];
-
-            TextView hintTv = FindViewById<TextView>(Resource.Id.hintTV);
-            wordToDisplay = sb.ToString();
-            RunOnUiThread(() => hintTv.Text = wordToDisplay);
-            //indexof++;
-            //if(indexof == wordToGuess.Length)
-            //{
-            //    _timer.Enabled = false;
-            //}
-            lettersRevealed.Add(indexof);
-            if(lettersRevealed.Count == wordToGuess.Length)
+            RunOnUiThread(() => hintTv.Text = wlc.GetWordToDisplay(true));
+            if(wlc.IsWordDisplayed())
             {
                 _timer.Enabled = false;
             }
         }
 
-        public int GetIndexOfLetterInDisplayed(int indexOfLetterInWord)
+        /// <summary>
+        /// Initialize timer.
+        /// </summary>
+        private void InitializeTimer()
         {
-            if(indexOfLetterInWord == 0)
-            {
-                return 0;
-            }
-            return 2 * indexOfLetterInWord;
+            _timer = new System.Timers.Timer();
+            _timer.Interval = 2000;
+            _timer.Elapsed += OnTimedEvent;
+            _timer.Enabled = true;
         }
     }
 }
