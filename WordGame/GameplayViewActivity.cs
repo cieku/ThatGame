@@ -34,6 +34,11 @@ namespace WordGame
         TextView hintTv;
 
         /// <summary>
+        /// Answer text view.
+        /// </summary>
+        TextView answerTV;
+
+        /// <summary>
         /// On create.
         /// </summary>
         /// <param name="savedInstanceState"></param>
@@ -43,6 +48,7 @@ namespace WordGame
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.GameplayView);
             hintTv = FindViewById<TextView>(Resource.Id.hintTV);
+            answerTV = FindViewById<TextView>(Resource.Id.answerTV);
 
             //Initialize veriables
             InitializeTimer();
@@ -75,6 +81,24 @@ namespace WordGame
             _timer.Interval = 2000;
             _timer.Elapsed += OnTimedEvent;
             _timer.Enabled = true;
+        }
+
+        /// <summary>
+        /// On click for check.
+        /// </summary>
+        /// <param name="v"></param>
+        [Java.Interop.Export("Submit")]
+        public void Submit(View v)
+        {
+            var answer = answerTV.Text;
+
+            if(wlc.ValidateTypedWord(answer))
+            {
+                Toast.MakeText(this, "Correct word", ToastLength.Long).Show();
+            }else
+            {
+                Toast.MakeText(this, "Wrong nigga !", ToastLength.Long).Show();
+            }
         }
     }
 }

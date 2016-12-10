@@ -150,6 +150,20 @@ namespace WordGame.GameCore
             return 2 * indexOfLetterInWord;
         }
 
+        /// <summary>
+        /// Word validation.
+        /// </summary>
+        /// <param name="answer">
+        /// Word to validate.
+        /// </param>
+        /// <returns>
+        /// True if answer is euqal to word to guess.
+        /// </returns>
+        public bool ValidateTypedWord(string answer)
+        {
+            return wordToGuess.Equals(answer);
+        }
+
         #endregion
     }
 }

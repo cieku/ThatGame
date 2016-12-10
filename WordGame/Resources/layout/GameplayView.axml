@@ -18,4 +18,11 @@
         p1:editable="true"
         p1:focusableInTouchMode="true"
         p1:hint="Type answer here" />
+    <Button
+        p1:text="Submit"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/hintTV"
+        p1:id="@+id/submitBtn"
+        p1:onClick="Submit" />
 </RelativeLayout>
