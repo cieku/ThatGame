@@ -1,14 +1,16 @@
 ﻿using Android.App;
 using Android.Widget;
-using Android.OS;
-using Android.Gms.Common.Apis;
-using Android.Gms.Common;
 using System;
-using Android.Runtime;
-using static Android.Gms.Common.Apis.GoogleApiClient;
-using Android.Gms.Plus;
+
 using Android.Content;
+using Android.Gms.Common;
+using Android.Gms.Common.Apis;
+using Android.Gms.Plus;
 using Android.Gms.Plus.Model.People;
+using Android.Runtime;
+using Android.OS;
+
+using static Android.Gms.Common.Apis.GoogleApiClient;
 
 namespace WordGame
 {
@@ -33,8 +35,6 @@ namespace WordGame
 
             SetContentView(Resource.Layout.Main);
 
-
-
             aa = FindViewById<TextView>(Resource.Id.textView1);
             aa.Text = "Maruś kocham Cie. 555";
 
@@ -44,7 +44,6 @@ namespace WordGame
             {
                 aa.Text = "Maro i Pysio zakochana paraaa. ;D";
             };
-
 
             googleSignInButton = FindViewById<SignInButton>(Resource.Id.SignInButton);
 
@@ -58,18 +57,9 @@ namespace WordGame
             builder.AddScope(PlusClass.ScopePlusLogin);
 
             googleApiClient = builder.Build();
-
-            //   GoogleApiClient client = new GoogleApiClient.Builder(this)
-            //       .enableAutoManage(this /* FragmentActivity */,
-            //                        this /* OnConnectionFailedListener */)
-            //.addApi(Drive.API)
-            //.addScope(Drive.SCOPE_FILE)
-            //.setAccountName("users.account.name@gmail.com")
-            //.build();
-
-
-
         }
+
+        
         private void googleSignInButton_Click(object sender, EventArgs e)
         {
             if(!googleApiClient.IsConnecting)
@@ -77,8 +67,6 @@ namespace WordGame
                 signInClicked = true;
                 ResolveSignInError();
             }
-
-
         }
 
         private void ResolveSignInError()
@@ -101,10 +89,7 @@ namespace WordGame
                     googleApiClient.Connect();
                 }
             }
-                
-
         }
-
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
@@ -142,11 +127,24 @@ namespace WordGame
         public void OnConnected(Bundle connectionHint)
         {
             signInClicked = false;
-            
+
+            if(infoPopulated)
+            {
+                // No need to populate info again.
+                return;
+            }
+
             if(PlusClass.PeopleApi.GetCurrentPerson(googleApiClient) != null)
             {
                 IPerson plusUser = PlusClass.PeopleApi.GetCurrentPerson(googleApiClient);
-                aa.Text = plusUser.DisplayName;
+
+                if (plusUser.HasDisplayName)
+                {
+                    aa.Text = plusUser.DisplayName;
+                }
+
+                // Collecting info done.
+                infoPopulated = true;
             }
         }
 
