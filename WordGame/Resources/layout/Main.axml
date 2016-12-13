@@ -10,4 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="117.5dp"
         android:id="@+id/textView1" />
+    <Button
+        android:text="Login with google view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton" />
+    <Button
+        android:text="Go to gameplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gotogameButton" 
+        android:onClick="GoToGameplay"/>
 </LinearLayout>
