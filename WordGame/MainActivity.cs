@@ -29,6 +29,7 @@ namespace WordGame
             {
                 aa.Text = "Maro i Pysio zakochana paraaa. ;D";
             };
+        }
     }
 }
 
