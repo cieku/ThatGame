@@ -9,6 +9,17 @@
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
+    <Button
+        android:text="Login with google view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton" />
+    <Button
+        android:text="Go to gameplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gotogameButton" 
+        android:onClick="GoToGameplay"/>
         p1:id="@+id/textView1" />
     <Button
         p1:text="Kliknij!"

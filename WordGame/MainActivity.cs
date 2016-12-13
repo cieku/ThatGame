@@ -2,6 +2,9 @@
 using Android.Widget;
 
 using Android.OS;
+using WordGame.GameCore;
+using Android.Content;
+using Android.Views;
 
 
 
@@ -22,13 +25,16 @@ namespace WordGame
 
             aa = FindViewById<TextView>(Resource.Id.textView1);
             aa.Text = "Maruś kocham Cie. 555";
+        }
 
-            Button button = FindViewById<Button>(Resource.Id.StartButton);
-
-            button.Click += delegate
-            {
-                aa.Text = "Maro i Pysio zakochana paraaa. ;D";
-            };
+        /// <summary>
+        /// On click for go to gameplay.
+        /// </summary>
+        /// <param name="v"></param>
+        [Java.Interop.Export("GoToGameplay")]
+        public void GoToGameplay(View v)
+        {
+            StartActivity(typeof(GameplayViewActivity));
         }
     }
 }

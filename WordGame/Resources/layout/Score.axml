@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/relativeLayout1">
+    <TextView
+        p1:text="Large Text"
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/scoreTv"
+        p1:layout_centerInParent="true" />
+    <TextView
+        p1:text="Congratulations Player"
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/textView2" />
+</RelativeLayout>
