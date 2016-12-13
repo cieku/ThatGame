@@ -292,53 +292,71 @@ namespace WordGame
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f07000c
-			public const int SignInButton = 2131165196;
+			// aapt resource value: 0x7f070011
+			public const int SignInButton = 2131165201;
 			
-			// aapt resource value: 0x7f07000b
-			public const int StartButton = 2131165195;
-			// aapt resource value: 0x7f050007
-			public const int gotogameButton = 2131034119;
+			// aapt resource value: 0x7f070010
+			public const int StartButton = 2131165200;
 			
 			// aapt resource value: 0x7f070000
 			public const int adjust_height = 2131165184;
 			
-			// aapt resource value: 0x7f050006
-			public const int loginButton = 2131034118;
 			// aapt resource value: 0x7f070001
 			public const int adjust_width = 2131165185;
 			
+			// aapt resource value: 0x7f07000b
+			public const int answerTV = 2131165195;
+			
 			// aapt resource value: 0x7f070006
-			public const int relativeLayout1 = 2131034112;
+			public const int auto = 2131165190;
 			
-			// aapt resource value: 0x7f050008
-			public const int scoreTv = 2131034120;
+			// aapt resource value: 0x7f070007
+			public const int dark = 2131165191;
 			
-			// aapt resource value: 0x7f050003
-			public const int submitBtn = 2131034115;
+			// aapt resource value: 0x7f070013
+			public const int gotogameButton = 2131165203;
+			
+			// aapt resource value: 0x7f07000a
+			public const int hintTV = 2131165194;
+			
 			// aapt resource value: 0x7f070003
 			public const int icon_only = 2131165187;
 			
-			// aapt resource value: 0x7f050005
-			public const int textView1 = 2131034117;
+			// aapt resource value: 0x7f070012
+			public const int kliknijMnieButton = 2131165202;
+			
 			// aapt resource value: 0x7f070008
 			public const int light = 2131165192;
 			
-			// aapt resource value: 0x7f070009
-			public const int linearLayout1 = 2131165193;
-			// aapt resource value: 0x7f050009
-			public const int textView2 = 2131034121;
+			// aapt resource value: 0x7f07000e
+			public const int linearLayout1 = 2131165198;
+			
+			// aapt resource value: 0x7f070014
+			public const int loginButton = 2131165204;
 			
 			// aapt resource value: 0x7f070002
 			public const int none = 2131165186;
-			// aapt resource value: 0x7f050004
-			public const int timeElapsed = 2131034116;
+			
+			// aapt resource value: 0x7f070009
+			public const int relativeLayout1 = 2131165193;
+			
+			// aapt resource value: 0x7f070015
+			public const int scoreTv = 2131165205;
 			
 			// aapt resource value: 0x7f070004
 			public const int standard = 2131165188;
 			
-			// aapt resource value: 0x7f07000a
-			public const int textView1 = 2131165194;
+			// aapt resource value: 0x7f07000c
+			public const int submitBtn = 2131165196;
+			
+			// aapt resource value: 0x7f07000f
+			public const int textView1 = 2131165199;
+			
+			// aapt resource value: 0x7f070016
+			public const int textView2 = 2131165206;
+			
+			// aapt resource value: 0x7f07000d
+			public const int timeElapsed = 2131165197;
 			
 			// aapt resource value: 0x7f070005
 			public const int wide = 2131165189;
@@ -376,10 +394,13 @@ namespace WordGame
 			public const int GameplayView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int LoginView = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Score = 2130903042;
+			public const int Main = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Score = 2130903043;
 			
 			static Layout()
 			{

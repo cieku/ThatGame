@@ -5,27 +5,18 @@
     p1:layout_height="match_parent"
     p1:id="@+id/linearLayout1">
     <TextView
-        p1:text="Large Text"
+        p1:text="Miejsce na Twoje imie:"
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:id="@+id/textView1" />
     <Button
-        p1:text="Just kliknij"
+        p1:text="Kliknij!"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/kliknijMnieButton" />
-    <Button
-        p1:text="Go to game"
+        p1:id="@+id/StartButton" />
+    <com.google.android.gms.common.SignInButton
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/gotogameButton"
-        p1:onClick="GoToGameplay" />
-    <Button
-        p1:text="Login with google account"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/loginButton"
-        p1:onClick="LogIntoGoogle" />
-  
+        p1:id="@+id/SignInButton" />
 </LinearLayout>

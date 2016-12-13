@@ -106,6 +106,9 @@
     <AndroidResource Include="Resources\layout\Score.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\LoginView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -125,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Words.txt" />
+  </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="googleplayservices-games">
       <Visible>False</Visible>

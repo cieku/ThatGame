@@ -25,6 +25,13 @@ namespace WordGame
 
             aa = FindViewById<TextView>(Resource.Id.textView1);
             aa.Text = "Maruś kocham Cie. 555";
+
+            Button buttonKliknij = FindViewById<Button>(Resource.Id.kliknijMnieButton);
+            buttonKliknij.Click += delegate
+                {
+                    aa.Text = "Maro i Pysio zakochana paraaa. ;D";
+                };
+
         }
 
         /// <summary>
@@ -35,6 +42,17 @@ namespace WordGame
         public void GoToGameplay(View v)
         {
             StartActivity(typeof(GameplayViewActivity));
+        }
+
+
+        /// <summary>
+        /// Goes to login page.
+        /// </summary>
+        /// <param name="v"></param>
+        [Java.Interop.Export("LogIntoGoogle")]
+        public void LogIntoGoogle(View v)
+        {
+            StartActivity(typeof(LoginActivity));
         }
     }
 }

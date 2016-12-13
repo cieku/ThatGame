@@ -1,7 +1,7 @@
-using Android.App;
-using Android.Widget;
 using System;
 
+using Android.App;
+using Android.Widget;
 using Android.Content;
 using Android.Gms.Common;
 using Android.Gms.Common.Apis;
@@ -15,7 +15,7 @@ using static Android.Gms.Common.Apis.GoogleApiClient;
 namespace WordGame
 {
 
-    [Activity(Label = "WordGame", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "LoginGoogleView", Icon = "@drawable/icon")]
     public class LoginActivity : Activity, IConnectionCallbacks, IOnConnectionFailedListener
     {
 
@@ -28,23 +28,15 @@ namespace WordGame
         private bool signInClicked;
         private bool infoPopulated;
 
-        TextView aa;
+        TextView textViewer;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.LoginView);
 
-            aa = FindViewById<TextView>(Resource.Id.textView1);
-            aa.Text = "Maruœ kocham Cie. 555";
-
-            Button button = FindViewById<Button>(Resource.Id.StartButton);
-
-            button.Click += delegate
-            {
-                aa.Text = "Maro i Pysio zakochana paraaa. ;D";
-            };
+            textViewer = FindViewById<TextView>(Resource.Id.textView1);            
 
             googleSignInButton = FindViewById<SignInButton>(Resource.Id.SignInButton);
 
@@ -141,7 +133,7 @@ namespace WordGame
 
                 if (plusUser.HasDisplayName)
                 {
-                    aa.Text = plusUser.DisplayName;
+                    textViewer.Text = plusUser.DisplayName;
                 }
 
                 // Collecting info done.
