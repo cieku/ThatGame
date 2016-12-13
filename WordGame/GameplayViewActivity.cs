@@ -12,6 +12,7 @@ using Android.Widget;
 using WordGame.GameCore;
 using Android.Content.PM;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace WordGame
 {
@@ -39,6 +40,16 @@ namespace WordGame
         TextView answerTV;
 
         /// <summary>
+        /// Stopwatch to measure time of singe game.
+        /// </summary>
+        Stopwatch stopwatch;
+
+        /// <summary>
+        /// Time elapsed text view.
+        /// </summary>
+        TextView timeElapsedTV;
+
+        /// <summary>
         /// On create.
         /// </summary>
         /// <param name="savedInstanceState"></param>
@@ -49,6 +60,7 @@ namespace WordGame
             SetContentView(Resource.Layout.GameplayView);
             hintTv = FindViewById<TextView>(Resource.Id.hintTV);
             answerTV = FindViewById<TextView>(Resource.Id.answerTV);
+            timeElapsedTV = FindViewById<TextView>(Resource.Id.timeElapsed);
 
             //Initialize veriables
             InitializeTimer();
@@ -56,6 +68,9 @@ namespace WordGame
             wlc.RollRandomWord();
 
             hintTv.Text = wlc.GetWordToDisplay();
+
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
         }
         
         /// <summary>
@@ -66,7 +81,8 @@ namespace WordGame
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
             RunOnUiThread(() => hintTv.Text = wlc.GetWordToDisplay(true));
-            if(wlc.IsWordDisplayed())
+            RunOnUiThread(() => timeElapsedTV.Text = string.Format("Time elapsed: {0}", TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).Seconds.ToString()));
+            if (wlc.IsWordDisplayed())
             {
                 _timer.Enabled = false;
             }
@@ -94,8 +110,13 @@ namespace WordGame
 
             if(wlc.ValidateTypedWord(answer))
             {
-                Toast.MakeText(this, "Correct word", ToastLength.Long).Show();
-            }else
+                stopwatch.Stop();
+                string score = TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).ToString(@"hh\:mm\:ss\:fff");
+                var scoreActivity = new Intent(this, typeof(ScoreActivity));
+                scoreActivity.PutExtra("score", score);
+                StartActivity(scoreActivity);
+            }
+            else
             {
                 Toast.MakeText(this, "Wrong nigga !", ToastLength.Long).Show();
             }

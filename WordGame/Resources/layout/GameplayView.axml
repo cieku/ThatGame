@@ -25,4 +25,11 @@
         p1:layout_below="@id/hintTV"
         p1:id="@+id/submitBtn"
         p1:onClick="Submit" />
+    <TextView
+        p1:text="Time elapsed :"
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/submitBtn"
+        p1:id="@+id/timeElapsed" />
 </RelativeLayout>
