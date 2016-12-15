@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Content.Res;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace WordGame.GameCore
 {
@@ -47,6 +48,8 @@ namespace WordGame.GameCore
         /// </summary>
         private Context context;
 
+        private Dictionary<string, string> letterMap;
+
         #endregion
 
         #region Constructor
@@ -59,6 +62,17 @@ namespace WordGame.GameCore
         {
             this.context = context;
             this.LoadWordsFromFile();
+            this.letterMap = new Dictionary<string, string>
+            {
+                { "¹","a" },
+                { "æ","c" },
+                { "ê","e" },
+                { "³","l" },
+                { "ñ","n" },
+                { "ó","o" },
+                { "¿","z" },
+                { "Ÿ","z" }
+            };
         }
 
         #endregion
@@ -116,6 +130,7 @@ namespace WordGame.GameCore
         {
             Random r = new Random();
             wordToGuess = words[r.Next(words.Count)];
+            wordToGuess = wordToGuess.ToUpper();
             hintLettersIndexes = Enumerable.Range(0,wordToGuess.Length).ToList();
             hintLettersIndexes = hintLettersIndexes.OrderBy(item => r.Next()).ToList();
             Regex pattern = new Regex(@"\w");
@@ -161,7 +176,21 @@ namespace WordGame.GameCore
         /// </returns>
         public bool ValidateTypedWord(string answer)
         {
+            var wordToGuess = this.wordToGuess;
+            var output = ReplacePolishLetters(answer, wordToGuess);
+            answer = output[0];
+            wordToGuess = output[1];
             return wordToGuess.Equals(answer);
+        }
+
+        private string[] ReplacePolishLetters(string answer, string wordToCompare)
+        {
+            foreach (KeyValuePair<string, string> pair in letterMap)
+            {
+                answer = answer.Replace(pair.Key, pair.Value);
+                wordToCompare = answer.Replace(pair.Key, pair.Value);
+            }
+            return new string[] { answer, wordToCompare };
         }
 
         #endregion

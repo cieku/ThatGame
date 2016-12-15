@@ -108,7 +108,7 @@ namespace WordGame
         {
             var answer = answerTV.Text;
 
-            if(wlc.ValidateTypedWord(answer))
+            if(wlc.ValidateTypedWord(answer.ToUpper()))
             {
                 stopwatch.Stop();
                 string score = TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).ToString(@"hh\:mm\:ss\:fff");
