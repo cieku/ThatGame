@@ -188,7 +188,7 @@ namespace WordGame.GameCore
             foreach (KeyValuePair<string, string> pair in letterMap)
             {
                 answer = answer.Replace(pair.Key, pair.Value);
-                wordToCompare = answer.Replace(pair.Key, pair.Value);
+                wordToCompare = wordToCompare.Replace(pair.Key, pair.Value);
             }
             return new string[] { answer, wordToCompare };
         }
